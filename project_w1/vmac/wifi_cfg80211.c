@@ -4129,14 +4129,15 @@ static int vm_cfg80211_start_ap(struct wiphy *wiphy, struct net_device *ndev,
 }
 
 static int vm_cfg80211_change_beacon(struct wiphy *wiphy,
-    struct net_device *ndev, struct cfg80211_beacon_data *info)
+    struct net_device *ndev, struct cfg80211_ap_update *params)
 {
+    struct cfg80211_beacon_data *info = &params->beacon;
     int ret = 0;
     struct wlan_net_vif *wnet_vif = wiphy_to_adapter(wiphy);
 
     DPRINTF(AML_DEBUG_CFG80211, " %s(%d): <%s>\n", __func__, __LINE__, ndev->name);
 
-    ret = _iv_cfg80211_add_set_beacon(wiphy, ndev, info,wnet_vif->vm_dtim_period);
+    ret = _iv_cfg80211_add_set_beacon(wiphy, ndev, info, wnet_vif->vm_dtim_period);
 
     return ret;
 }
@@ -5358,6 +5359,7 @@ int vm_cfg80211_external_auth(struct wiphy *wiphy, struct net_device *dev,
 */
 static struct cfg80211_ops vm_cfg80211_ops =
 {
+    
     .suspend = vm_cfg80211_suspend,
     .resume = vm_cfg80211_resume,
 

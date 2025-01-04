@@ -29,6 +29,7 @@ unsigned int rxframenum =0;
 #endif
 #include "wifi_common.h"
 #include <linux/inetdevice.h>
+#include <linux/completion.h>
 
 #define CHIP_ID_F "CHIP_ID=%04x%08x\n"
 #define CHIP_ID_EFUASE_L 0x8
@@ -2561,7 +2562,7 @@ int hal_work_thread(void *param)
 
     PRINT("############# Exit work Thread ###############\n");
     WAKE_LOCK_DESTROY(hal_priv, WAKE_LOCK_WORK);
-    complete_and_exit(&hal_priv->work_thread_completion, 0);
+    complete(&hal_priv->work_thread_completion);
 
     return 0;
 }
@@ -2636,7 +2637,7 @@ int hal_txok_thread(void *param)
 
     printk("%s(%d)  =====> exit TXOK Thread <=====\n",__func__,__LINE__);
     WAKE_LOCK_DESTROY(hal_priv, WAKE_LOCK_TXOK);
-    complete_and_exit(&hal_priv->txok_thread_completion, 0);
+    complete(&hal_priv->txok_thread_completion);
 
     return 0;
 }
@@ -2768,7 +2769,7 @@ int hal_rx_thread(void *param)
 
     printk("%s(%d)  =====> exit RX Thread <=====\n",__func__,__LINE__);
     WAKE_LOCK_DESTROY(hal_priv, WAKE_LOCK_RX);
-    complete_and_exit(&hal_priv->rx_thread_completion, 0);
+    complete(&hal_priv->rx_thread_completion);
     return 0;
 }
 
@@ -2817,7 +2818,7 @@ int hi_irq_thread(void *param)
     }
 
     WAKE_LOCK_DESTROY(hal_priv, WAKE_LOCK_HI_IRQ_THREAD);
-    complete_and_exit(&hal_priv->hi_irq_thread_completion, 0);
+    complete(&hal_priv->hi_irq_thread_completion);
 
     return 0;
 }

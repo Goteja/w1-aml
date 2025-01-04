@@ -609,7 +609,7 @@ static int b2b_tx_thread_function(void *param)
         printk("**** stop : when pt send pkt %d done ***", loop);
     }// thread loop
 
-    complete_and_exit(&b2b_tx_struct.b2b_thread_cmplt, 0);
+    complete(&b2b_tx_struct.b2b_thread_cmplt);
     printk("**** exit b2b_tx_thread_function ***");
     return 0;
 }
