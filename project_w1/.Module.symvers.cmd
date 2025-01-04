@@ -1,0 +1,1 @@
+savedcmd_/data/coding/w1-aml/project_w1/Module.symvers :=  scripts/mod/modpost -M        -o /data/coding/w1-aml/project_w1/Module.symvers -T /data/coding/w1-aml/project_w1/modules.order -i Module.symvers -e 

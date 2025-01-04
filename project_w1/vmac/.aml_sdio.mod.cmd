@@ -1,0 +1,1 @@
+savedcmd_/data/coding/w1-aml/project_w1/vmac/aml_sdio.mod := printf '%s\n'   w1_sdio/w1_sdio.o | awk '!x[$$0]++ { print("/data/coding/w1-aml/project_w1/vmac/"$$0) }' > /data/coding/w1-aml/project_w1/vmac/aml_sdio.mod
