@@ -753,7 +753,7 @@ __INLINE unsigned int Hal_TxDescriptor_GetCtsTime(struct hi_agg_tx_desc* HiTxDes
                                ;
                 }
         }
-}
+}EXPORT_SYMBOL(Hal_TxDescriptor_GetCtsTime);
 
 unsigned char hal_mac_frame_type( unsigned int frame_control, unsigned int type )
 {

@@ -1,0 +1,1 @@
+savedcmd_/data/coding/w1-aml/project_w1/vmac/modules.order := {   echo /data/coding/w1-aml/project_w1/vmac/aml_sdio.o;   echo /data/coding/w1-aml/project_w1/vmac/vlsicomm.o; :; } > /data/coding/w1-aml/project_w1/vmac/modules.order

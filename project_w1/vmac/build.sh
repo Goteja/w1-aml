@@ -4,7 +4,7 @@
 KERNEL_PATH="/lib/modules/$(uname -r)/build"
 INSTALL="/lib/modules/$(uname -r)/kernel/drivers/wifi"
 PKG_BUILD=$(pwd)
-PKG_NAME="w1-wifi"  # Добавьте имя вашего пакета
+PKG_NAME="w1-wifi"
 
 # Function to get module directory
 get_full_module_dir() {
@@ -28,7 +28,7 @@ makeinstall_target() {
     find "${PKG_BUILD}/" -name "*.ko" -not -path '*/\.*' -exec cp {} "${INSTALL}/$(get_full_module_dir)/${PKG_NAME}" \;
 
     mkdir -p "${INSTALL}/$(get_full_firmware_dir)/w1"
-    cp "${PKG_BUILD}/vmac/aml_wifi"*.txt "${INSTALL}/$(get_full_firmware_dir)/w1" || true
+    cp "${PKG_BUILD}/aml_wifi"*.txt "${INSTALL}/$(get_full_firmware_dir)/w1" || true
 }
 
 # Execute the functions
